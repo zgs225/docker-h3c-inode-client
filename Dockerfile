@@ -81,13 +81,13 @@ COPY ./assets/inode.arm64_E0626.deb /tmp/inode.deb
 RUN dpkg -i /tmp/inode.deb || apt-get install -y -f
 RUN rm -f /tmp/inode.deb
 
+COPY danted.conf /etc/danted.conf
+
 # 下载并安装 KasmVNC
 RUN wget https://github.com/kasmtech/KasmVNC/releases/download/v1.3.3/kasmvncserver_focal_1.3.3_arm64.deb -O /tmp/kasmvnc.deb \
     && dpkg -i /tmp/kasmvnc.deb || apt-get install -y -f \
     && rm -f /tmp/kasmvnc.deb
 
-# 启动脚本
-COPY start-vnc.sh /home/vncuser/start-vnc.sh
+COPY start-vnc.sh /start-vnc.sh
 
-# 启动 VNC 服务
-CMD ["/home/vncuser/start-vnc.sh"]
+CMD ["/start-vnc.sh"]
