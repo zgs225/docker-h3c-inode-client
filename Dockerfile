@@ -89,5 +89,6 @@ RUN wget https://github.com/kasmtech/KasmVNC/releases/download/v1.3.3/kasmvncser
     && rm -f /tmp/kasmvnc.deb
 
 COPY start-vnc.sh /start-vnc.sh
+COPY xstartup /root/.vnc/xstartup
 
 CMD ["/start-vnc.sh"]

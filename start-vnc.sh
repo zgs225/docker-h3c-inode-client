@@ -38,11 +38,13 @@ echo "network:
   websocket_port: 3000
   ssl:
     require_ssl: false
+command_line:
+  prompt: false
 " | tee $HOME/.vnc/kasmvnc.yaml
 
 # 启动 KasmVNC
 echo "Starting KasmVNC server..."
-kasmvncserver :1 -geometry 1280x720 -depth 24 -noxstartup
+kasmvncserver :1 -geometry 1280x720 -depth 24
 
 export DISPLAY=:1
 
