@@ -2,7 +2,6 @@ name: build-and-push
 
 on:
   push:
-    branches: [ 'main' ]
 
 env:
   GHCR_REPO: ghcr.io/zgs225/h3c-inode-client
