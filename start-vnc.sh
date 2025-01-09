@@ -35,7 +35,7 @@ echo -e "$PASSWORD\n$PASSWORD\n" | kasmvncpasswd -u $VNC_USER -w -r
 mkdir -p $HOME/.vnc
 echo "network:
   protocol: $PROTOCOL
-  websocket_port: 3000
+  websocket_port: 5901
   ssl:
     require_ssl: false
 command_line:
