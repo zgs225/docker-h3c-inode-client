@@ -31,7 +31,7 @@ docker run -d \
   -p 1080:1080 \
   -e USER=myuser \
   -e PASSWORD=mypassword \
-  -v /path/to/vpn_data:/opt/apps/com.client.inode.arm/files/clientfiles \
+  -v /path/to/vpn_data:/opt/apps/com.client.inode.arm/files/clientfiles/7000 \
   --cap-add=NET_ADMIN \
   --device /dev/net/tun \
   ghcr.io/zgs225/h3c-inode-client:latest
@@ -54,7 +54,7 @@ services:
       - USER=myuser
       - PASSWORD=mypassword
     volumes:
-      - ./vpn_data:/opt/apps/com.client.inode.arm/files/clientfiles
+      - ./vpn_data:/opt/apps/com.client.inode.arm/files/clientfiles/7000
     restart: unless-stopped
 ```
 
