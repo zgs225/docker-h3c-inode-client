@@ -49,6 +49,7 @@ services:
       - /dev/net/tun
     ports:
       - "5901:5901"
+      - "1080:1080"
     environment:
       - USER=myuser
       - PASSWORD=mypassword
