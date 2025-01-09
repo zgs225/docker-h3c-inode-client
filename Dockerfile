@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
     xvfb \
     fluxbox \
     xterm \
+    libnm0 \
+    network-manager \
     net-tools \
     iproute2 \
     iptables \
@@ -77,14 +79,21 @@ RUN apt-get update && apt-get install -y \
     x11-xserver-utils \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./assets/inode.arm64_E0626.deb /tmp/inode.deb
+# Install architecture-specific inode client
+ARG TARGETARCH
+COPY ./assets/inode.${TARGETARCH}_E0626.deb /tmp/inode.deb
 RUN dpkg -i /tmp/inode.deb || apt-get install -y -f
 RUN rm -f /tmp/inode.deb
 
 COPY danted.conf /etc/danted.conf
 
 # 下载并安装 KasmVNC
-RUN wget https://github.com/kasmtech/KasmVNC/releases/download/v1.3.3/kasmvncserver_focal_1.3.3_arm64.deb -O /tmp/kasmvnc.deb \
+# Install architecture-specific KasmVNC
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+      wget https://github.com/kasmtech/KasmVNC/releases/download/v1.3.3/kasmvncserver_focal_1.3.3_amd64.deb -O /tmp/kasmvnc.deb; \
+    else \
+      wget https://github.com/kasmtech/KasmVNC/releases/download/v1.3.3/kasmvncserver_focal_1.3.3_arm64.deb -O /tmp/kasmvnc.deb; \
+    fi \
     && dpkg -i /tmp/kasmvnc.deb || apt-get install -y -f \
     && rm -f /tmp/kasmvnc.deb
 

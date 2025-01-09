@@ -56,4 +56,8 @@ sleep 1 # 等待fluxbox启动
 # 启动 iNodeClient
 echo "Starting iNodeClient..."
 /etc/init.d/iNodeAuthService restart
-/opt/apps/com.client.inode.arm/files/.iNode/iNodeClient
+if [ "$(uname -m)" = "x86_64" ]; then
+  /opt/apps/com.client.inode.amd/files/.iNode/iNodeClient
+else
+  /opt/apps/com.client.inode.arm/files/.iNode/iNodeClient
+fi
