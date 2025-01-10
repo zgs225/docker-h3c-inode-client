@@ -3,6 +3,10 @@ name: build-and-push
 on:
   push:
 
+permissions:
+  contents: read
+  packages: write
+
 env:
   GHCR_REPO: ghcr.io/zgs225/h3c-inode-client
 
@@ -15,8 +19,6 @@ jobs:
         platform:
           - linux/amd64
           - linux/arm64
-    permissions:
-      packages: write
     steps:
       - name: Prepare
         run: |
@@ -70,8 +72,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build
-    permissions:
-      packages: write
     steps:
       - name: Download digests
         uses: actions/download-artifact@v4
