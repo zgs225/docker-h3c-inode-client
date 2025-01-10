@@ -3,7 +3,9 @@ name: build-and-push
 on:
   push:
 
-permissions: write-all
+permissions:
+  contents: read
+  packages: write
 
 env:
   GHCR_REPO: ghcr.io/zgs225/h3c-inode-client
@@ -99,6 +101,7 @@ jobs:
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
+            ${{ github.ref == 'refs/heads/main' && 'type=raw,value=latest' || '' }}
 
       - name: Create manifest list and push
         working-directory: /tmp/digests
