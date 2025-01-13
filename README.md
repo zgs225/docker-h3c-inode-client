@@ -2,6 +2,8 @@
 
 这是一个支持多架构（amd64/arm64）的 H3C iNode VPN 客户端 Docker 镜像，基于 Ubuntu 20.04 构建，包含 KasmVNC 远程桌面服务。
 
+![H3C iNode Client](./assets/figure.png)
+
 ## 功能特性
 - 支持 x86_64 和 arm64 架构
 - 内置 H3C iNode 客户端
