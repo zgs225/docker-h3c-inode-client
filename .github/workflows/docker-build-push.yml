@@ -2,6 +2,9 @@ name: build-and-push
 
 on:
   push:
+    paths:
+      - '**'
+      - '!README.md'
 
 permissions:
   contents: read
